@@ -28,6 +28,7 @@ class Program
             string name = Console.ReadLine();
             return name;
         }
+        
 
     static int PromptUserNumber()
         {
@@ -44,6 +45,7 @@ class Program
 
     static void DisplayResult(string name, int square)
         {
-            Console.WriteLine($"The Square pf yopur Number is {square}");
+            Console.WriteLine($"The Square 0f yopur Number is {square}");
+            Console.WriteLine($"Your name is : {name}"); 
         }
 }
