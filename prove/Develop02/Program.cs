@@ -21,11 +21,11 @@ class Program
         generate._prompts.Add("4.Save");
         generate._prompts.Add("5.Quit");
         generate.GetRandomPrompt();
-        generate.NameGenerator()
+        generate._NameGenerator();
 
         if (userReturn == "1")
             {
-                generate.NameGenerator();
+                generate._NameGenerator();
             }
         else
             {
