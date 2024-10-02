@@ -9,7 +9,11 @@ public class Journal
 
             public void DisplayAll()
                 {
-                      
+                      foreach (Entry newEntry in _entries)
+                        {
+                            Console.WriteLine(newEntry);
+                        }
+                       
                 }
 
             public void SaveToFile(string file)

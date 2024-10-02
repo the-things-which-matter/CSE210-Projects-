@@ -7,7 +7,7 @@ class Program
     static void Main(string[] args)
     {
         string userChoice = "";
-        userFile ="";
+        string userFile ="";
 
         //Console.WriteLine("Hello Develop02 World!");
         //int userReturn = -2;
@@ -18,11 +18,6 @@ class Program
 
         PromptGenerator generate = new PromptGenerator();
         //while(userReturn != 5)
-        generate._prompts.Add("1.Write");
-        generate._prompts.Add("2.Display");
-        generate._prompts.Add("3.Load");
-        generate._prompts.Add("4.Save");
-        generate._prompts.Add("5.Quit");
 
         generate._displayOptions.Add("what was your favorite part of the day");
         generate._displayOptions.Add("what made you smile?");
@@ -30,6 +25,12 @@ class Program
         generate._displayOptions.Add("How did you see the lord's hand in your life today");
 
 
+
+        generate._prompts.Add("1.Write");
+        generate._prompts.Add("2.Display");
+        generate._prompts.Add("3.Load");
+        generate._prompts.Add("4.Save");
+        generate._prompts.Add("5.Quit");
 
         Entry newEntry = new Entry();
         newEntry.Display();
@@ -54,6 +55,9 @@ class Program
         userEntrty.Display();
 
         Journal inJournal = new Journal();
+ 
+
+
         
 
 
