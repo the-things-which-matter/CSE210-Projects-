@@ -8,26 +8,40 @@ public class PromptGenerator
         public List<string> _displayOptions = new List<string>();
 
         //show a list of prompt for use to pick from
+       // public string GetRandomPrompt()
+        //    {
+
+                private Random random = new Random();
         public string GetRandomPrompt()
             {
-                foreach (string screenPrompts in _prompts )
-                    {
-                        Console.WriteLine(screenPrompts);
+                int index = random.Next(_prompts.Count);
+                return _prompts[index];
+            }
+
+
+
+                //foreach (string screenPrompts in _prompts )
+                 //   { 
+                        
+              //  int index = _prompts.Next(screenPrompts.Count);
+              //  return _prompts[index];
+               //      }
+                      //  Console.WriteLine(screenPrompts);
                         //string userReturn =Console.ReadLine();
-                    }
-                return "";
+               //     }
+              //  return "";
             }
 
-        public string DisplayQuestions(string userChoice)
-            {
+        ///public string DisplayQuestions(string userChoice)
+          //  {
                 
-                //foreach (string question in _displayOptions)
+              //  foreach (string question in _displayOptions)
                  //   {
-                     //   Console.WriteLine(question);
-                //    }
-                return userChoice;
+                 //       Console.WriteLine(question);
+                 //   }
+             //   return userChoice;
 
-            }
+          //  }
 
       //  public class NameGenerator()
         ////    {
@@ -41,4 +55,4 @@ public class PromptGenerator
                         //    return $"{randomPrompt}";
                        // }
           //  }
-    }
+   // }

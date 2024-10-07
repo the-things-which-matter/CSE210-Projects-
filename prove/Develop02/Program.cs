@@ -6,22 +6,23 @@ class Program
 {
     static void Main(string[] args)
     {
-        string userChoice = "";
-        string userFile ="";
+        //string userChoice = "";
+       // string userFile ="";
         string numberReply = "";
 
         //Console.WriteLine("Hello Develop02 World!");
         PromptGenerator generate = new PromptGenerator();
         
-        generate._displayOptions.Add("what was your favorite part of the day");
-        generate._displayOptions.Add("what made you smile?");
-        generate._displayOptions.Add("what made you frastrated today?");
-        generate._displayOptions.Add("How did you see the lord's hand in your life today");
+        generate._prompts.Add("what was your favorite part of the day");
+        generate._prompts.Add("what made you smile?");
+        generate._prompts.Add("what made you frastrated today?");
+        generate._prompts.Add("How did you see the lord's hand in your life today");
 
 
         Entry newEntry = new Entry();
         newEntry.Display();
-        newEntry._promptText = generate.DisplayQuestions(userChoice);
+        //newEntry._promptText = generate.DisplayQuestions(userChoice);
+        newEntry._promptText = generate.GetRandomPrompt();
         
         Entry userEntrty = new Entry();
         userEntrty._date ="2/10/224";
@@ -45,9 +46,11 @@ class Program
 
                 numberReply = Console.ReadLine();
                 if (numberReply == "1")
-                    while(numberReply == "1")
+                    //while(numberReply == "1")
                        {
-                            Console.WriteLine(generate.DisplayQuestions( userChoice));
+                            Console.WriteLine(generate.GetRandomPrompt());
+                            string answer = Console.ReadLine();
+                            
                         }
 
                 else if (numberReply == "2")

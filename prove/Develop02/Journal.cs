@@ -40,18 +40,18 @@ public class Journal
                 using (StreamWriter outputFile = new StreamWriter(filename))
                 
 
-{
-    foreach (Entry entry in entries )
-        {
+            {
+             foreach (Entry entry in entries )
+           {
               outputFile.WriteLine(entry._date);
-        }
-    // You can add text to the file with the WriteLine method
-    outputFile.WriteLine("promt:{}");
+           }
+           // You can add text to the file with the WriteLine method
+             outputFile.WriteLine("promt:{}");
     
-    // You can use the $ and include variables just like with Console.WriteLine
-    string color = "Blue";
-    outputFile.WriteLine($"My favorite color is {color}");
-}
+          // You can use the $ and include variables just like with Console.WriteLine
+           string color = "Blue";
+           outputFile.WriteLine($"My favorite color is {color}");
+             }
             }
 
         //LoadFromFile method
