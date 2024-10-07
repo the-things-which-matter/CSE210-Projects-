@@ -2,6 +2,7 @@ public class PromptGenerator
     {
         //questions for uisers to answer
         public List<string> _prompts = new List<string>();
+        
 
         //options from which the user chooses
         public List<string> _displayOptions = new List<string>();
@@ -19,11 +20,13 @@ public class PromptGenerator
 
         public string DisplayQuestions(string userChoice)
             {
-                foreach (string question in _displayOptions)
-                    {
-                        Console.WriteLine(question);
-                    }
+                
+                //foreach (string question in _displayOptions)
+                 //   {
+                     //   Console.WriteLine(question);
+                //    }
                 return userChoice;
+
             }
 
       //  public class NameGenerator()

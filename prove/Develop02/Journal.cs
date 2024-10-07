@@ -1,35 +1,99 @@
-public class Journal
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.IO.Enumeration;
+
+
+
+
+//firts class
+
+//journal class
+public class Journal 
     {
-        public List<Entry> _entries;
+        private List<Entry> entries = new List<Entry>();
+                    
+        //AddEntry Method
+        public void AddEntry(Entry entry)
+            {
+                entries.Add(entry);
+            }
 
-        //public void AddEntry(Entry newEntry)
-            //{
+        //DisplayEntry Method
+        public void DisplayEntries()
+            {
+                if (entries.Count == 0)
+                    {
+                        Console.WriteLine("No entries");
+                        return;
+                    }
 
-          //  }
+                foreach (var entry in entries)
+                    {
+                        entry.Display();
+                    }
+            }
 
-            public void DisplayAll()
-                {
-                      foreach (Entry newEntry in _entries)
-                        {
-                            Console.WriteLine(newEntry);
-                        }
-                       
-                }
+         //SaveTo file method
+        public void SaveToFile(string filename)
+            {
+                using (StreamWriter outputFile = new StreamWriter(filename))
+                
 
-            public void SaveToFile(string file)
-                {
-                      using(StreamWriter outPutFile = new StreamWriter(file))
-                         foreach (Entry text in _entries)
-                        {
-                            outPutFile.WriteLine(text);
-                        }
-                }
+{
+    foreach (Entry entry in entries )
+        {
+              outputFile.WriteLine(entry._date);
+        }
+    // You can add text to the file with the WriteLine method
+    outputFile.WriteLine("promt:{}");
+    
+    // You can use the $ and include variables just like with Console.WriteLine
+    string color = "Blue";
+    outputFile.WriteLine($"My favorite color is {color}");
+}
+            }
 
-            public string LoadFile(string file)
-                {
-                    foreach (Entry words in _entries)
-                       string [] lines = System.IO.file.ReadAllLines(file);
+        //LoadFromFile method
+        public void LoadFromFile(string filename)
+            {
+                if (!File.Exists(filename))
+                    {
+                        Console.WriteLine("file not found");
+                        
+                    }
+                
+            }
 
-                     return words;
-                }
+
+
+//PromptGenerator class
+public class PromptGenerator
+    {
+        private List<string> prompts = new List<string>
+            {
+        
+                "what made you smile?",
+                "what made you frastrated today?",
+                "How did you see the lord's hand in your life today",
+            };
+        private Random random = new Random();
+        public string GetRandomPrompt()
+            {
+                int index = random.Next(prompts.Count);
+                return prompts[index];
+            }
     }
+}
+
+///real code in prgram.css
+/// create instances
+
+
+
+///while loop to start code
+///
+
+
+
+         
