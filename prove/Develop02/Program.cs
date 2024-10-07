@@ -28,6 +28,12 @@ class Program
         userEntrty._date ="2/10/224";
         userEntrty.Display();
 
+        Importance crucial = new Importance();
+        crucial._economic ="Economic";
+        crucial._emotional = "Emotional";
+        crucial._mental= "Mental";
+        crucial._social= "Social";
+
         Journal inJournal = new Journal();
 
         Console.WriteLine(generate.GetRandomPrompt());
@@ -43,6 +49,7 @@ class Program
                 Console.WriteLine("3.Load");
                 Console.WriteLine("4.Save");
                 Console.WriteLine("5.Quit");
+                Console.WriteLine("6.Priority reminders");
 
                 numberReply = Console.ReadLine();
                 if (numberReply == "1")
@@ -70,6 +77,10 @@ class Program
                         inJournal.SaveToFile(userFileName);
 
                     }
+
+                else if (numberReply == "6")
+                        crucial.ImportantLifeAreas();
+                        
                 else
                     {
                         Console.WriteLine("Thanks for using the program");
