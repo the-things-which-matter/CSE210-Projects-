@@ -5,39 +5,26 @@ class Program
 {
     static void Main(string[] args)
     {
-        //int choice = 0;
-        int guess = 0;
-        while(guess!= 5)
-    {
-        Console.WriteLine("select one of these");
-        Console.WriteLine("1.sleep");
-        Console.WriteLine("2.Eat");
-        Console.WriteLine("3.Drink");
-        Console.WriteLine("what would you like to do");
-        string feed = Console.ReadLine();
-        int newFeed = int.Parse(feed);
+        Console.WriteLine("yo");
+        string  num ="2";
+        Console.WriteLine("enter name");
+        string name = Console.ReadLine();
 
-        if (feed == "1")
-            {
-                Console.WriteLine("1");
-            }
-        else if (feed == "2")
-            {
-                Console.WriteLine("2");
-            }
-        else if (feed == "3")
-            {
-                Console.WriteLine("3");
-            }
-        else
-            {
-                Console.WriteLine("4");
-            }
-        guess = newFeed;
-      
+         Console.WriteLine("enter free");
+        string free = Console.ReadLine();
+        //++num;
+        Console.WriteLine($"brigha hates {free}");
+        Console.WriteLine($"{name} is a robot");
+        int nem = int.Parse(num);
 
-    }
-     Console.WriteLine("you win");
-      
+        int [] _arrays ={2,6,6};
+        Console.WriteLine(_arrays[2]);
+        _arrays[3] = 4;
+
+        string [] people = new string[3];
+        people[0] = "qen";
+        people[1] = "ten";
+
+        
     }
 }
