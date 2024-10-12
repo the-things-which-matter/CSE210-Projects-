@@ -13,10 +13,10 @@ class Program
         //Console.WriteLine("Hello Develop02 World!");
         PromptGenerator generate = new PromptGenerator();
         
-        generate._prompts.Add("what was your favorite part of the day");
+        generate._prompts.Add("what was your favorite part of the day?");
         generate._prompts.Add("what made you smile?");
         generate._prompts.Add("what made you frastrated today?");
-        generate._prompts.Add("How did you see the lord's hand in your life today");
+        generate._prompts.Add("How did you see the lord's hand in your life today?");
 
 
         Entry newEntry = new Entry();
@@ -35,13 +35,10 @@ class Program
         crucial._social= "Social";
 
         Journal inJournal = new Journal();
+        //inJournal.SaveToFile(filename);
 
         Console.WriteLine(generate.GetRandomPrompt());
 
-        //string userReturn = Console.ReadLine();
-        
-       // string userReply = Console.ReadLine();
-       // int numberReply = int.Parse(userReply);
         while (numberReply != "5")
             {
                 Console.WriteLine("1.Write");
@@ -53,16 +50,25 @@ class Program
 
                 numberReply = Console.ReadLine();
                 if (numberReply == "1")
-                    //while(numberReply == "1")
+                    
                        {
+                            string prompt = generate.GetRandomPrompt();
                             Console.WriteLine(generate.GetRandomPrompt());
                             string answer = Console.ReadLine();
+
+                            Entry userEntry = new Entry(); 
+                            userEntry._promptText = prompt;
+                            Console.WriteLine("Enter your response:");
+                            userEntry._entryText = answer;
+                            userEntry._date = DateTime.Now.ToString("dd/MM/yyyy"); 
+                            inJournal.AddEntry(userEntry);
                             
                         }
 
                 else if (numberReply == "2")
                     {
-                        Console.WriteLine( newEntry.Display());
+                        //Console.WriteLine( newEntry.Display());
+                        inJournal.DisplayEntries();
                     }
                 else if (numberReply == "3")
                     {
