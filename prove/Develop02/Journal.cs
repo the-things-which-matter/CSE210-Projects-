@@ -16,15 +16,15 @@ public class Journal
         //DisplayEntry Method
         public void DisplayEntries()
             {
-                if (entries.Count == 0)
-                    {
-                        Console.WriteLine("No entries");
-                        return;
-                    }
+               if (entries.Count == 0)
+                  {
+                     Console.WriteLine("No entries");
+                     return;
+                  }
 
-                foreach (var entry in entries)
+                  foreach (var entry in entries)
                     {
-                        entry.Display();
+                       entry.Display();
                     }
             }
 
@@ -34,58 +34,52 @@ public class Journal
                 using (StreamWriter outputFile = new StreamWriter(filename))
                 
 
-            {
-             foreach (Entry entry in entries )
-                {
-                   outputFile.WriteLine($"Date:{entry._date},Prompt:{entry._promptText},Entry Text:{entry._entryText}");
-                }
+               {
+                  foreach (Entry entry in entries )
+                   {
+                       outputFile.WriteLine($"Date:{entry._date},Prompt:{entry._promptText},Entry Text:{entry._entryText}");
+                   }
            // You can add text to the file with the WriteLine method
             // outputFile.WriteLine("promt:{}");
     
           // You can use the $ and include variables just like with Console.WriteLine
            //string color = "Blue";
            //outputFile.WriteLine($"My favorite color is {color}, ");
-             }
+                }
             }
 
         //LoadFromFile method
-        public void LoadFromFile(string filename)
-            {
-               // if (!File.Exists(filename))
-                  ////  {
-                    //    Console.WriteLine("file not found");
-                    //    return;
-                        
-                   // }
-                            {
-                     if (!File.Exists(filename))
-                             {
-                                Console.WriteLine("File not found");
-                                return;
-                             }
+       public void LoadFromFile(string filename)
+           {
+               {
+                   if (!File.Exists(filename))
+                      {
+                        Console.WriteLine("File not found");
+                        return;
+                      }
 
-                              entries.Clear(); // Clear existing entries
+                       entries.Clear(); // Clear existing entries
                                //indenting 
 
-                                using (StreamReader inputFile = new StreamReader(filename))
-                            {
-                              string line;
-                               while ((line = inputFile.ReadLine()) != null)
+                       using (StreamReader inputFile = new StreamReader(filename))
+                          {
+                            string line;
+                            while ((line = inputFile.ReadLine()) != null)
                                {
-                                   var parts = line.Split('|');
-                                   if (parts.Length == 3)
-                                {
-                                Entry entry = new Entry
-                                   {
-                                     _date = parts[0],
-                                      _promptText = parts[1],
-                                      _entryText = parts[2]
-                                   };
-                                   entries.Add(entry);
-                                  }
-                        }
-                  }
-              }
+                                  var parts = line.Split('|');
+                                  if (parts.Length == 3)
+                                      {
+                                        Entry entry = new Entry
+                                          {
+                                           _date = parts[0],
+                                           _promptText = parts[1],
+                                           _entryText = parts[2]
+                                          };
+                                          entries.Add(entry);
+                                      }
+                                }
+                          }
+               }
                 
            }
 
@@ -100,7 +94,7 @@ public class Journal
              //   "what made you smile?",
               ///  "what made you frastrated today?",
              //   "How did you see the lord's hand in your life today",
-            };
+};
         //private Random random = new Random();
        // public string GetRandomPrompt()
            // {
