@@ -17,7 +17,11 @@ public class Order
 
         public string GetTotal()
             {
-                return 
+                foreach (Product prod in _products)
+                    {
+                        float total2 += prod
+                    }
+                return total2;
             }
 
         public string GetShippingLabel(string name, Address address)
