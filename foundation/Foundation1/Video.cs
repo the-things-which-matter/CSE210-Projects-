@@ -20,26 +20,19 @@ public class Video
 
         public int GetNumberOfComment()
             {
-                int place = 0;
-
-                foreach (Comment oneComment in _comments)
-                    {
-                        place1 = oneComment[0]
-                        int commentNumber = place1
-                    }
-                return place1;
+                return _comments.Count;
             }
         public string GetVideoDetails()
             {
-                Console.WriteLine($"The video was called {_title} and was written by {_author} and was {_lengthInSeconds}")
-                return "";
+                return $"The video was called {_title} and was written by {_author} and was {_lengthInSeconds} seconds";
+                
             }
 
         public void DisplayComments()
             {
                 foreach (Comment comment in _comments)
                     {
-                        Console.WriteLine(comment);
+                        Console.WriteLine(comment.GetCommmentDetails());
                     }
 
             }
