@@ -14,11 +14,19 @@ public class Customer
         public bool IsInUSA()
             {
                
-                return true;
+                return _address.IsInUSA();;
             }
 
-        public string GetName()
+         public string GetName()
             {
                 return _name;
             }
+
+         public Address GetAddress()
+            {
+              return _address;
+            }
+
+
+       
     }

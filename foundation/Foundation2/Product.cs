@@ -18,4 +18,14 @@ public class Product
                 float total = _price * _quantity;
                 return total;
             }
+
+        public string GetName()
+              {
+                return _name;
+              }
+
+         public string GetProductId()
+              {
+                 return _productId;
+             }
     }

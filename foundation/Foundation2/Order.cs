@@ -9,23 +9,35 @@ public class Order
                 _customer = customer;
             }
 
-        public string GetPackingLabel(string name, string productId)
-            {
-                //foreach (Product product in _products)
-                return name;
+         public string GetPackingLabel()
+             {
+                string label = "Packing Label:\n";
+                foreach (Product product in _products)
+                {
+                   label += $"{product.GetName()}, Product ID: {product.GetProductId()}\n";
+                 }
+                return label;
             }
 
-        public string GetTotal()
-            {
-                foreach (Product prod in _products)
-                    {
-                        float total2 += prod
-                    }
-                return total2;
-            }
+         public float GetTotal()
+              {
+                 float productTotal = _products.Sum(product => product.GetTotalCost());
 
-        public string GetShippingLabel(string name, Address address)
+                 // Determine shipping cost
+                float shippingCost = _customer.IsInUSA() ? 5.0f : 35.0f;
+
+                return productTotal + shippingCost;
+                }
+                
+
+      
+
+        public string GetShippingLabel()
             {
-                return name;
+             string customerName = _customer.GetName();
+             string customerAddress = _customer.GetAddress().GetDisplayText();
+
+            return $"Shipping Label:\nName: {customerName}\n{customerAddress}";
             }
-    }
+         
+   }

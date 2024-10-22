@@ -18,9 +18,10 @@ public class Address
                     return $"{_streetAddress},{_city},{_stateOrProvince} ,{_country}";
                 }
 
-            public bool IsInUSA()
+             public bool IsInUSA()
                 {
-                    return true;
+                    return _country.ToLower() == "usa"; 
                 }
 
+           
     }
