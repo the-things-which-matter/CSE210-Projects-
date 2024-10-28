@@ -39,12 +39,7 @@ public class Journal
                    {
                        outputFile.WriteLine($"Date:{entry._date},Prompt:{entry._promptText},Entry Text:{entry._entryText}");
                    }
-           // You can add text to the file with the WriteLine method
-            // outputFile.WriteLine("promt:{}");
-    
-          // You can use the $ and include variables just like with Console.WriteLine
-           //string color = "Blue";
-           //outputFile.WriteLine($"My favorite color is {color}, ");
+          
                 }
             }
 

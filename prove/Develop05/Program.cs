@@ -3,7 +3,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Threading.Tasks.Dataflow;
-
+using System.Collections.Generic;
 class Program
 {
     static void Main(string[] args)
@@ -18,45 +18,62 @@ class Program
 
         ReflectingActivity reflect = new ReflectingActivity();
 
-        Activity active = new Activity();
+       // Activity active = new Activity();
 
-        List<string> animation = new List<string>();
-        animation.Add("l");
-        animation.Add("/");
-        animation.Add("-");
-        animation.Add("\\");
-        animation.Add("l");
-        animation.Add("/");
+       /// Console.WriteLine("Welcome to the Activity Program!");
+       // Console.WriteLine("Select an activity:");
+       // Console.WriteLine("1. Breathing Activity");
+       // Console.WriteLine("2. Listing Activity");
+        //Console.WriteLine("3. Reflecting Activity");
 
-        string answer = "";
+         Console.WriteLine("Welcome to the Activity Program!");
 
-        Thread.Sleep(3000);
-        do{
+        while (true)
+        {
+            Console.WriteLine("Select an activity:");
+            Console.WriteLine("1. Breathing Activity");
+            Console.WriteLine("2. Listing Activity");
+            Console.WriteLine("3. Reflecting Activity");
+            Console.WriteLine("4. Exit");
 
-        Console.WriteLine("How long would you like for your session?");
-        string answer = Console.ReadLine();
-        while (answer =="yes")
-            
-           Console.WriteLine($"Get Ready...{anim}");
-            reflect.GetRandomPrompt();
-           foreach (string anim in animation)
+            if (int.TryParse(Console.ReadLine(), out int choice))
+            {
+                Activity activity;
 
-            reflect.GetRandomQuestion();
-            for (int i = 5; i > 0; i--)
+                if (choice == 1)
                 {
-                    Console.WriteLine(5);
-                    Thread.Sleep(1000);
+                    activity = new BreathingActivity();
                 }
-            
+                else if (choice == 2)
+                {
+                    activity = new ListingActivity();
+                }
+                else if (choice == 3)
+                {
+                    activity = new ReflectingActivity();
+                }
+                else if (choice == 4)
+                {
+                    Console.WriteLine("Goodbye!");
+                    break; 
+                }
+                else
+                {
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    continue; 
+                }
 
+                activity.Run();
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a number.");
+            }
+        }
+    }
 
-           
-        } while (answer =="yes");
-        Console.WriteLine("Done");
-
-
-          
+      
         
 
-    }
+    
 }
