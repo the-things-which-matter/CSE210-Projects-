@@ -6,7 +6,9 @@ public class BreathingActivity : Activity
             {
                 
             }
-        public void Run()
+
+        
+        public override void Run()
             {
                /// DisplaySratingMessage();
                 DisplayStartingMessage();
