@@ -18,7 +18,8 @@ class Program
         _activities.Add(swim);
         
         foreach (Activity activity in _activities)
-            Console.WriteLine(activity);
+            Console.WriteLine(activity.GetSummary("03 Nov 2022"));
+       
 
     }
 }

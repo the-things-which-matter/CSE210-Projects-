@@ -1,7 +1,7 @@
 public class Activity
     {
         private int _date;
-        private int _length;
+        protected int _length;
 
         public Activity(int date, int Length)
             {
@@ -9,24 +9,27 @@ public class Activity
                 _length = Length;
             }
 
-        public virtual int GetDistance(int laps)
+        public virtual double GetDistance(int laps)
             {
-                int distance = (laps * 50) / 1000;
-                return distance;
+                return (laps * 50.0) / 1000 * 0.62; 
             }
-        public virtual int GetSpeed(int distance, int minutes)
-            {
-                int speed = (distance / minutes) * 60;
-                return speed;
-            }
-        public virtual int  GetPace(int minutes, int distance)
-            {
-                int pace = minutes / distance;
-                return pace;
-            }
+
+
+        public virtual double GetSpeed(double distance, int minutes)
+             {
+                 return (distance / minutes) * 60; 
+             }
+
+            public virtual double GetPace(int minutes, double distance)
+                 {
+                    return minutes / distance; 
+                 }
+
+            public virtual string GetSummary(string date)
+                {
+                 return $"{date} - Length: {_length} min"; 
+                }
+
         
-        public virtual string GetSummary(string date, string minutes, int distance, int speed, int pace)
-            {
-                return $"{date} {minutes} -Distance{distance}miles,Speed{speed}mph,Pace:{pace} min per mile"; 
-            }
+        
     }

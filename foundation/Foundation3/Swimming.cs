@@ -1,41 +1,19 @@
 public class Swimming : Activity
     {
 
-
-        private int _distance;
-        private int _speed;
         private int _laps;
 
-
-           public Swimming(int distance,int speed,int laps)
-            {
-                _distance = distance;
-                _speed =speed;
+        public Swimming(int date, int length, int laps) : base(date, length)
+              {
                 _laps = laps;
-            }
+              }
 
-
-
-        public override int  GetDistance(int laps)
-            {
-                int dis = (laps * 50) / 1000;
-                return dis;
+        public override string GetSummary(string date)
+             {
+              double distance = GetDistance(_laps);
+              double speed = GetSpeed(distance, _length);
+              double pace = GetPace(_length, distance);
+              return $"{date} Swimming ({_length} min) - Distance: {distance:F1} miles, Speed: {speed:F1} mph, Pace: {pace:F2} min per mile";
             }
-        public override int  GetSpeed(int distance,int minutes)
-            {
-                 int speed = (distance / minutes) * 60;
-                return speed;
-            }
-        public override int  GetPace(int minutes,int distance)
-            {
-                int pace = minutes / distance;
-                return pace;
-            }
-        
-        public override string GetSummary(string date, string minutes, int distance, int speed, int pace)
-            {
-                return $"{date} {minutes} distance is {distance}miles,Speed{speed}mph,Pace:{pace} min per mile"; 
-            }
-
 
     }
