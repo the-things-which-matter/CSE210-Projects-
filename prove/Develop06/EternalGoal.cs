@@ -1,23 +1,21 @@
 public class EternalGoal : Goal
     {
-        public EternalGoal(string name,string description,string points) 
-            {
-                _name = name;
-                _description = description;
-                _poitns = points;
-            }
+         public EternalGoal(string name, string description, int points) 
+        : base(name, description, points)
+              {
+              }
 
         public override void RecordEvent()
             {
-                
-                Console.WriteLine(EternalGoal)
+            Console.WriteLine($"{_shortName}, Prompt: {_description}, Entry Text: {_points}");
             }
+
         public override bool IsComplete()
             {
-                return true;
+                return false;
             }
         public override string GetStringRepresentation()
-            {
-                return $"{_shortName},{_descriptio},{_points}";
-            }
+           {
+            return $"{_shortName},{_description},{_points}";
+           }
     }

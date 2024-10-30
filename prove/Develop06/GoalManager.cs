@@ -2,26 +2,28 @@ using System.Runtime.CompilerServices;
 
 public class GoalManager
     {
-        private List<Goal> _goal;
-        private int _score;
+        private List<Goal> _goals;
+        private int _scores;
 
-        public GoalManager()
+         public GoalManager()
             {
-                foreach(Goal goal in _goal)
-                    {
-                        Console.WriteLine(goal);
-                    }
-            }
+            _goals = new List<Goal>();
+           _scores = 0;
+           }
+
 
         public void Start()
-            {
-                Console.WriteLine("choose one of the following");
-            }
+           {
+            Console.WriteLine("Choose one of the following:");
+            ListGoalNames();
+           }
         public void DisplayPlayerInfo()
-            {
-                string goal = _goal;
-                Console.WriteLine(goal);
-            }
+           {
+            foreach (Goal goal in _goals)
+              {
+               Console.WriteLine(goal.GetDetailsString());
+              }
+          }
         public void ListGoalNames()
             {
                 Console.WriteLine("The types of Goals are:");
@@ -30,45 +32,64 @@ public class GoalManager
                 Console.WriteLine("3.Checklist GOal");
 
             }
-        public void ListGoalDetails()
-            {
-                $"Date:{goal._shortName},Prompt:{goal._description},Entry Text:{goal._points}");
-                   
-            }
-        public void CreatGoal()
-            {
-                goal.description;
-            }
-        public void RecordEvent()
-            {
-               string goal = $" the goals are{_goal}";
-               Console.WriteLine(goal);
-            }
-        public void SaveGoals()
-            {
-                      using (StreamWriter outputFile = new StreamWriter(filename))
-                
 
-               {
-                  foreach (Goal goal in _goal )
+         public void CreateGoal(string type, string name, string description, int points, int target = 0, int bonus = 0)
+             {
+              Goal newGoal;
+               if (type == "Simple")
                    {
-                       outputFile.WriteLine($"Date:{goal._shortName},Prompt:{goal._description},Entry Text:{goal._points}");
+                    newGoal = new SimpleGoal(name, description, points);
                    }
-          
-                }
-            }
-        public void LoadGoals()
-            {
-                if (_goal.Count == 0)
+               else if (type == "Eternal")
+                   {
+                   newGoal = new EternalGoal(name, description, points);
+                   }
+               else if (type == "Checklist")
+                   {
+                   newGoal = new CheckListGoal(name, description, points, target, bonus);
+                   }
+              else
                   {
-                     Console.WriteLine("No goals");
-                     return;
+                  throw new ArgumentException("Invalid goal type.");
                   }
 
-                  foreach (var goal in _goal)
-                    {
-                       goal.GetDetailsString();
-                    }
-            }
-
+                 _goals.Add(newGoal);
     }
+        
+                public void RecordEvent(string goalName)
+              {
+                 foreach (Goal goal in _goals)
+                      {
+                      if (goal.GetStringRepresentation() == goalName)
+                      {
+                       goal.RecordEvent();
+                       break;
+                      }
+                      }
+              }
+        public void SaveGoals(string filename)
+              {
+               using (StreamWriter outputFile = new StreamWriter(filename))
+                 {
+                  foreach (Goal goal in _goals)
+                     {
+                       outputFile.WriteLine(goal.GetDetailsString());
+                     }
+                }
+             }
+
+        public void LoadGoals(string filename)
+             {
+             if (_goals.Count == 0)
+                {
+                Console.WriteLine("No goals");
+                return;
+                }
+
+               foreach (var goal in _goals)
+               {
+               Console.WriteLine(goal.GetDetailsString());
+               }
+        }
+}
+       

@@ -6,90 +6,95 @@ class Program
     static void Main(string[] args)
     {
 
-        GoalManager goalManager = new GoalManager();
+       GoalManager goalManager = new GoalManager();
+        string numberReply = "";
 
-        Goal goal = new Goal("eat 4 times a day"," i will do my best to eat atleast 4 times per day for my body to be well fed","67");
-        
+        Console.WriteLine("You have 0 points");
 
-        SimpleGoals simpleGoal1 = new SimpleGoals("sports","playing basketball 3 times a day","34");
+        while (numberReply != "6")
+        {
+            Console.WriteLine("Menu Options");
+            Console.WriteLine("1. Create New Goal");
+            Console.WriteLine("2. List Goals");
+            Console.WriteLine("3. Save Goals");
+            Console.WriteLine("4. Load Goals");
+            Console.WriteLine("5. Record Event");
+            Console.WriteLine("6. Quit");
 
-        EternalGoal eternalGoal1 = new EternalGoal("Temple","Visit the Temple 3 Before the year ends","78");
-
-        CheckListGoal checkListGoal1 = new CheckListGoal("youtube video","uploading one youyube video after every 3 days","59");
-        Console.WriteLine("you have 0 points");
-         while (numberReply != "6")
-        Console.WriteLine("Menu Options");
-        Console.WriteLine(""+"1.Create New Goal");
-        Console.WriteLine(""+"2.List Goals");
-        Console.WriteLine(""+"3.Save Goals");
-        Console.WriteLine(""+"4.Load Goals");
-        Console.WriteLine(""+"5.Record Event");
-        Console.WriteLine(""+"6.Quit");
-
-        numberReply = Console.ReadLine();
-
-
-
-      
-        while (numberReply != "5")
+            numberReply = Console.ReadLine();
+                if (numberReply == "1")
             {
-                Console.WriteLine("1.Write");
-                Console.WriteLine("2.Display");
-                Console.WriteLine("3.Load");
-                Console.WriteLine("4.Save");
-                Console.WriteLine("5.Quit");
-                Console.WriteLine("6.Priority reminders");
+                Console.WriteLine("The types of Goals are:");
+                Console.WriteLine("1. Simple Goal");
+                Console.WriteLine("2. Eternal Goal");
+                Console.WriteLine("3. Checklist Goal");
 
-                numberReply = Console.ReadLine();
+                Console.WriteLine("Which type of Goal would you like to create?");
+                string goalChoice = Console.ReadLine();
 
-                 if (numberReply == "1")
+                if (goalChoice == "1")
                     {
-                        Console.WriteLine("The types of Goals are:");
-                        Console.WriteLine("1.Simple Goal");
-                        Console.WriteLine("2.Eternal Goal");
-                        Console.WriteLine("3.Checklist GOal");
+                      Console.WriteLine("Type your simple goal:");
+                      string simpleGoalName = Console.ReadLine();
+                      Console.WriteLine("Type the description:");
+                      string simpleGoalDescription = Console.ReadLine();
+                      Console.WriteLine("Type the points (integer):");
+                      int simpleGoalPoints = int.Parse(Console.ReadLine());
 
-                        Console.WriteLine("Which type of Goal would you like to create");
-                        string goalChoice = Console.ReadLine();
-                        else if (goalChoice == "1")
-                            {
-                                Console.WriteLine("type any simple Goal");
-                                string simple = Console.ReadLine();
-                                simple.RecortEvent();
-                               
-                            }
-                        else if (goalChoice == "2")
-                            {
-                                Console.WriteLine("type any Eternal Goal");
-                                string eternal = Console.ReadLine();
-                                Console.WriteLine(eternal.GetStringRepresentation());
-                            }
-                        else if(goalChoice == "3") 
-                                Console.WriteLine("type any simple Goal");
-                                string checklist = Console.ReadLine();
-                                checklist.RecordEvent();
-                          
-
-                  else if (numberReply == "2")
-                    {
-                        
-                        goalManager.ListGoalDetails();
+                     SimpleGoal simpleGoal = new SimpleGoal(simpleGoalName, simpleGoalDescription, simpleGoalPoints);
+                      goalManager.CreateGoal("Simple", simpleGoalName, simpleGoalDescription, simpleGoalPoints);
                     }
-
-                 else if (numberReply == "3")
+                else if (goalChoice == "2")
                     {
-                        Console.WriteLine("Enter a File Name");
-                        string userInput = Console.ReadLine();
-                       
-                        goalManager.LoadGoals(userInput);
+                      Console.WriteLine("Type your eternal goal:");
+                      string eternalGoalName = Console.ReadLine();
+                      Console.WriteLine("Type the description:");
+                      string eternalGoalDescription = Console.ReadLine();
+                      Console.WriteLine("Type the points (integer):");
+                      int eternalGoalPoints = int.Parse(Console.ReadLine());
 
-                 else if (numberReply == "4")
-                    {
-                        Console.WriteLine("whaT is the file name?");
-                        string userFileName = Console.ReadLine();
-                        
-                        goalManager.SaveGoals(userFileName);
-                    }
+                       EternalGoal eternalGoal = new EternalGoal(eternalGoalName, eternalGoalDescription, eternalGoalPoints);
+                       goalManager.CreateGoal("Eternal", eternalGoalName, eternalGoalDescription, eternalGoalPoints);
+                     }
+                else if (goalChoice == "3")
+                     {
+                         Console.WriteLine("Type your checklist goal:");
+                         string checklistGoalName = Console.ReadLine();
+                         Console.WriteLine("Type the description:");
+                         string checklistGoalDescription = Console.ReadLine();
+                         Console.WriteLine("Type the points (integer):");
+                         int checklistGoalPoints = int.Parse(Console.ReadLine());
+                         Console.WriteLine("Type the target:");
+                         int checklistTarget = int.Parse(Console.ReadLine());
+                          Console.WriteLine("Type the bonus:");
+                         int checklistBonus = int.Parse(Console.ReadLine());
 
+                         CheckListGoal checkListGoal = new CheckListGoal(checklistGoalName, checklistGoalDescription, checklistGoalPoints, checklistTarget, checklistBonus);
+                         goalManager.CreateGoal("Checklist", checklistGoalName, checklistGoalDescription, checklistGoalPoints, checklistTarget, checklistBonus);
+                   }
+            }
+            else if (numberReply == "2")
+                {
+                goalManager.DisplayPlayerInfo(); // Change to list details
+                }
+            else if (numberReply == "3")
+                 {
+                    Console.WriteLine("Enter a file name to save goals:");
+                    string userFileName = Console.ReadLine();
+                    goalManager.SaveGoals(userFileName);
+                }
+            else if (numberReply == "4")
+                {
+                     Console.WriteLine("What is the file name to load goals?");
+                     string userFileName = Console.ReadLine();
+                     goalManager.LoadGoals(userFileName);
+               }
+            else if (numberReply == "5")
+                {
+                     Console.WriteLine("Which goal do you want to record an event for?");
+                    string goalName = Console.ReadLine();
+                    goalManager.RecordEvent(goalName);
+               }
+        }
     }    
 }

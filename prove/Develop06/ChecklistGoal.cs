@@ -4,28 +4,29 @@ public class CheckListGoal : Goal
         private int _target;
         private int _bonus;
 
-        public CheckListGoal(string name, string description,string points) base (name,description)
-            {
-                _name = name;
-                _description = description;
-                _points -= points;
-            }
-        public string GetDetailString()
-            {
-                return _decription;
-            }
-        public override void RecordEvent()
-            {
-                
-                $"{goal._shortName},Prompt:{goal._description},Entry Text:{goal._points}";
-                   }
-            }
+        public CheckListGoal(string name, string description, int points, int target, int bonus) 
+        : base(name, description, points)
+                  {
+                   _target = target;
+                   _bonus = bonus;
+                   _amountCompleted = 0; 
+                  }
+        //public string GetDetailString()
+          //  {
+           //     return _decription;
+           // }
+         public override void RecordEvent()
+              {
+                _amountCompleted++;
+                Console.WriteLine($"{_shortName}, Prompt: {_description}, Entry Text: {_points}");
+              }
+        
         public override bool IsComplete()
             {
-                return true;
+               return _amountCompleted >= _target;
             }
         public override string GetStringRepresentation()
-            {
-               return $"{_shortName},{_descriptio},{_points}";;
-            }
+                {
+                return $"{_shortName},{_description},{_points},{_amountCompleted}/{_target}";
+                }
     }

@@ -2,11 +2,11 @@ using System.ComponentModel;
 
 public class Goal
     {
-        private string _shortName;
-        private string _description;
-        private string _points;
+        protected string _shortName;
+        protected string _description;
+        protected int _points;
 
-        public Goal(string name,string description,string points)
+        public Goal(string name,string description,int points)
             {
                 _shortName = name;
                 _description = description;
@@ -15,8 +15,8 @@ public class Goal
 
         public virtual void RecordEvent()
             {
-              string event =  $"{_shortName},{_description},{_points}";
-              console.WriteLine(event)
+              string eventDetails =  $"{_shortName},{_description},{_points}";
+              Console.WriteLine(eventDetails);
             }
         public virtual bool IsComplete()
             {

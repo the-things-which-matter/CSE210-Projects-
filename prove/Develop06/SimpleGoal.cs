@@ -1,24 +1,23 @@
-public class SimpleGoals : Goal
+public class SimpleGoal : Goal
     {
         private  bool _isComplete;
 
-        public SimpleGoals(string name,string description,string points)
-            {
-                _name = name;
-                _description = description;
-                _points = points; 
-            }
+        public SimpleGoal(string name, string description, int points) 
+        : base(name, description, points)
+             {
+              _isComplete = false; 
+             }
         public override void RecordEvent()
-            {
-                $"{goal._shortName},Prompt:{goal._description},Entry Text:{goal._points}");
-                   }
-            }
+             {
+              _isComplete = true; 
+              Console.WriteLine($"{_shortName}, Prompt: {_description}, Entry Text: {_points}");
+             }
         public override bool IsComplete()
             {
-                return true;
+                 return _isComplete;
             }
     public override string GetStringRepresentation()
-    {
-        return $"{_shortName},{_descriptio},{_points}";;
-    }
+           {
+              return $"{_shortName},{_description},{_points}";
+           }
 }
